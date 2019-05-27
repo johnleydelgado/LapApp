@@ -1,5 +1,7 @@
 package com.androidapp.labapp.Authentication.SignUp.Model;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.androidapp.labapp.Authentication.SignUp.Listener.signup_model_interface;
 import com.androidnetworking.AndroidNetworking;
@@ -26,7 +28,7 @@ public class Registration {
         this.listener = listener;
     }
 
-    public void userRegistration() {
+    public void userRegistration(final ProgressBar progressBar) {
 
 
         JSONObject jsonObject = new JSONObject();
@@ -48,17 +50,25 @@ public class Registration {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-
+                        progressBar.setVisibility(View.GONE);
 
                         JSON json = new JSON(response);
+                        if(json.key("success").intValue() == 1){
 
+                            Log.d("register","sucess");
+                            listener.didSignupSucceed(json.key("message").stringValue());
+                        }else{
+                            Log.d("register3","sucess");
+                            listener.didNotSignUpSucceed(json.key("message").stringValue());
+                        }
                         //Log.d("tag1","id is : " + json.key("user_id").intValue());
-                        listener.didSignupSucceed(json.key("message").stringValue());
+
                         // do anything with response
                     }
                     @Override
                     public void onError(ANError error) {
                         // handle error
+                        progressBar.setVisibility(View.GONE);
                         Log.d("tag1",""+error);
                     }
                 });

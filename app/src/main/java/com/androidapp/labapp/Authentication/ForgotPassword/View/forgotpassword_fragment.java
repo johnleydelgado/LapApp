@@ -31,7 +31,7 @@ public class forgotpassword_fragment extends Fragment implements forgotp_present
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_forgotpassword, container, false);
         Button RememberPasswordBtn = (Button) view.findViewById(R.id.rememberpassword_btn);
-        Button forgotPasswordBtn = view.findViewById(R.id.forgotpassword_btn);
+        Button forgotPasswordBtn = view.findViewById(R.id.send_btn);
         final EditText email = view.findViewById(R.id.email_editText);
         final EditText newpassword = view.findViewById(R.id.new_password);
         final EditText confirmNewPassword = view.findViewById(R.id.confirm_password);

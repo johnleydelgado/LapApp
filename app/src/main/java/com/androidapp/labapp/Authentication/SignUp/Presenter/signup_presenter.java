@@ -1,6 +1,7 @@
 package com.androidapp.labapp.Authentication.SignUp.Presenter;
 
 import android.util.Log;
+import android.widget.ProgressBar;
 
 import com.androidapp.labapp.Authentication.SignUp.Model.Registration;
 import com.androidapp.labapp.Authentication.SignUp.Listener.signup_presenter_interface;
@@ -18,18 +19,23 @@ public class signup_presenter implements signup_model_interface {
         this.listener = listener;
     }
 
-    public void SignUpForm(String fullname, String username, String email, String password) {
+    public void SignUpForm(String fullname, String username, String email, String password, ProgressBar progressbar) {
         Log.d("tag1","signup foorm");
         model.fullname = fullname;
         model.username = username;
         model.email = email;
         model.password = password;
-        model.userRegistration();
+        model.userRegistration(progressbar);
     }
 
 
     @Override
     public void didSignupSucceed(String message) {
         listener.showPopUp(message);
+    }
+
+    @Override
+    public void didNotSignUpSucceed(String message) {
+        listener.showPopUpError(message);
     }
 }

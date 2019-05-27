@@ -1,6 +1,10 @@
 package com.androidapp.labapp.Authentication.SignIn.Model;
 
 import android.util.JsonReader;
+import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.androidapp.labapp.Authentication.ForgotPassword.Listener.forgotp_model_interface;
 import com.androidapp.labapp.Authentication.SignIn.Listener.signin_model_interface;
@@ -23,29 +27,37 @@ public class SignIn {
         this.listener = listener;
     }
 
-    public void signinProcess(){
+    public void signinProcess(final ProgressBar progressBar){
+
 
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("username",username);
+            jsonObject.put("username", username);
             jsonObject.put("password", password);
 
 
-        }catch (JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
-
-        AndroidNetworking.post("http://192.168.100.6:81/login").addJSONObjectBody(jsonObject)
+        AndroidNetworking.post("http://192.168.100.6:81/login")
+                .addJSONObjectBody(jsonObject)
                 .setPriority(Priority.MEDIUM).build().getAsJSONObject(new JSONObjectRequestListener() {
             @Override
             public void onResponse(JSONObject response) {
+                progressBar.setVisibility(View.GONE);
                 JSON json = new JSON(response);
-                listener.didSignInSucceed(json.stringValue());
+                Log.d("try",username+ " "+password);
+                if(json.key("success").intValue()== 1) {
+                    listener.didSignInSucceed(json.key("message").stringValue());
+                }else{
+                    listener.didNotSignInSucceed(json.key("message").stringValue());
+                }
             }
 
             @Override
             public void onError(ANError anError) {
-
+                Log.e("error",anError.getMessage());
+                progressBar.setVisibility(View.GONE);
             }
         });
     }
