@@ -7,4 +7,10 @@
     <string name="user_dashboard_profile">Profile</string>
     <string name="key_signature_byte_intent">KEY_SIGNATURE_BYTE</string>
     <string name="signature_warning">Signature is ready</string>s
+
+    <string name="admin_institution">Institution</string>
+    <string name="admin_user">User</string>
+    <string name="admin_waivermaster">Waiver Master</string>
+    <string name="admin_patients">Patients</string>
+
 </resources>

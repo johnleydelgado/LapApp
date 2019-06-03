@@ -1,4 +1,4 @@
-package com.androidapp.labapp.Dashboard.Signature;
+package com.androidapp.labapp.Dashboard.Signature.View;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,8 +10,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.androidapp.labapp.AppMain.MainActivity;
-import com.androidapp.labapp.Dashboard.User.dashboard_user_activity;
+import com.androidapp.labapp.Dashboard.User.View.Activity.dashboard_user_activity;
 import com.androidapp.labapp.R;
 import com.androidapp.labapp.Utils.PaintView;
 

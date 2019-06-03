@@ -6,6 +6,8 @@ import android.widget.ProgressBar;
 import com.androidapp.labapp.Authentication.SignUp.Model.Registration;
 import com.androidapp.labapp.Authentication.SignUp.Listener.signup_presenter_interface;
 import com.androidapp.labapp.Authentication.SignUp.Listener.signup_model_interface;
+import com.github.ybq.android.spinkit.sprite.Sprite;
+import com.github.ybq.android.spinkit.style.Wave;
 
 public class signup_presenter implements signup_model_interface {
     public static signup_presenter instance;
@@ -19,7 +21,7 @@ public class signup_presenter implements signup_model_interface {
         this.listener = listener;
     }
 
-    public void SignUpForm(String fullname, String username, String email, String password, ProgressBar progressbar) {
+    public void SignUpForm(String fullname, String username, String email, String password, Wave progressbar) {
         Log.d("tag1","signup foorm");
         model.fullname = fullname;
         model.username = username;

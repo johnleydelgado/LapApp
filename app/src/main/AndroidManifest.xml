@@ -22,8 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Dashboard.User.dashboard_user_activity"></activity>
-        <activity android:name=".Dashboard.Signature.SignatureViewController"></activity>
+        <activity android:name=".Dashboard.User.View.Activity.dashboard_user_activity"></activity>
+        <activity android:name=".Dashboard.Signature.View.SignatureViewController"></activity>
     </application>
 
 </manifest>

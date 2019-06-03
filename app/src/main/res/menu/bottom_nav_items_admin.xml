@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/institution"
+        android:icon="@drawable/ic_home_teal_500_24dp"
+        android:title="@string/admin_institution">
+
+    </item>
+
+    <item
+        android:id="@+id/user"
+        android:icon="@drawable/ic_user_teal_500_24dp"
+        android:title="@string/admin_user">
+
+    </item>
+
+    <item
+        android:id="@+id/waivermaster"
+        android:icon="@drawable/ic_waivermaster_teal_500_24dp"
+        android:title="@string/admin_waivermaster">
+
+    </item>
+
+    <item
+        android:id="@+id/patients"
+        android:icon="@drawable/ic_patient_teal_500_24dp"
+        android:title="@string/admin_patients">
+
+    </item>
+</menu>

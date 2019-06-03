@@ -17,7 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.androidapp.labapp.Dashboard.Signature.SignatureViewController;
+import com.androidapp.labapp.Dashboard.Signature.View.SignatureViewController;
 import com.androidapp.labapp.R;
 import com.androidapp.labapp.UI.PopUp;
 import com.androidapp.labapp.Utils.Utils;

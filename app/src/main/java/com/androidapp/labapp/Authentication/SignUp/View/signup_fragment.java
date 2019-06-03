@@ -21,6 +21,7 @@ import com.androidapp.labapp.Utils.Utils;
 import com.androidnetworking.AndroidNetworking;
 import com.github.ybq.android.spinkit.sprite.Sprite;
 import com.github.ybq.android.spinkit.style.ChasingDots;
+import com.github.ybq.android.spinkit.style.Wave;
 
 import libs.mjn.prettydialog.PrettyDialog;
 import libs.mjn.prettydialog.PrettyDialogCallback;
@@ -35,8 +36,7 @@ public class signup_fragment extends Fragment implements signup_presenter_interf
     private EditText emailText;
     private EditText passwordText;
     private Button signup;
-    private ProgressBar progressBar;
-
+    private Wave mWaveDrawable;
     public signup_fragment() {
         // Required empty public constructor
     }
@@ -49,8 +49,6 @@ public class signup_fragment extends Fragment implements signup_presenter_interf
         ImageView img = (ImageView) view.findViewById(R.id.signin_imageview);
         Button forgotpasswordBtn = (Button) view.findViewById(R.id.forgotpassword_btn);
         signup = view.findViewById(R.id.register_btn);
-        progressBar = view.findViewById(R.id.progress_bar);
-
 
         fullnameText = view.findViewById(R.id.fullname_editText);
         usernameText = view.findViewById(R.id.username_editText);
@@ -58,9 +56,11 @@ public class signup_fragment extends Fragment implements signup_presenter_interf
         passwordText = view.findViewById(R.id.password_editText);
 
         // Dropdown
-        Sprite chasingDots = new ChasingDots();
-        progressBar.setIndeterminateDrawable(chasingDots);
-        progressBar.setVisibility(View.GONE);
+        mWaveDrawable = new Wave();
+
+
+
+
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,8 +114,10 @@ public class signup_fragment extends Fragment implements signup_presenter_interf
             emailText.requestFocus();
         }
         else{
-            progressBar.setVisibility(View.VISIBLE);
-            presenter.SignUpForm(fullnameText.getText().toString(), usernameText.getText().toString(), emailText.getText().toString(), passwordText.getText().toString(),progressBar);
+            mWaveDrawable.start();
+            mWaveDrawable.setBounds(0, 0, 100, 100);
+            signup.setCompoundDrawables(null, null, mWaveDrawable, null);
+            presenter.SignUpForm(fullnameText.getText().toString(), usernameText.getText().toString(), emailText.getText().toString(), passwordText.getText().toString(),mWaveDrawable);
 
         }
 

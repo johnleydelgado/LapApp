@@ -6,10 +6,4 @@
         android:title="@string/user_dashboard_info">
 
     </item>
-    <item
-        android:id="@+id/profile_user"
-        android:icon="@drawable/user_toolbar_icon_profile"
-        android:title="@string/user_dashboard_profile">
-
-    </item>
 </menu>

@@ -1,5 +1,6 @@
 package com.androidapp.labapp.Authentication.SignIn.Presenter;
 
+import android.util.Log;
 import android.widget.ProgressBar;
 
 import com.androidapp.labapp.Authentication.SignIn.Listener.signin_model_interface;
@@ -15,8 +16,8 @@ public class signin_presenter implements signin_model_interface {
     }
 
     @Override
-    public void didSignInSucceed(String message) {
-        listener.showPopUp(message);
+    public void didSignInSucceed(String message,int id) {
+        listener.showPopUp(message,id);
 
     }
 
@@ -25,6 +26,12 @@ public class signin_presenter implements signin_model_interface {
         listener.showPopUpError(message);
 
     }
+
+    @Override
+    public void getRoleID(int id) {
+        listener.saveprefRoleID(id);
+    }
+
     public void SignInForm(String username , String password , ProgressBar progressBar){
         model.username = username;
         model.password = password;

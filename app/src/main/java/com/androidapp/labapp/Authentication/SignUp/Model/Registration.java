@@ -8,6 +8,8 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.github.ybq.android.spinkit.sprite.Sprite;
+import com.github.ybq.android.spinkit.style.Wave;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,7 +30,7 @@ public class Registration {
         this.listener = listener;
     }
 
-    public void userRegistration(final ProgressBar progressBar) {
+    public void userRegistration(final Wave progressBar) {
 
 
         JSONObject jsonObject = new JSONObject();
@@ -42,7 +44,7 @@ public class Registration {
             e.printStackTrace();
         }
 
-        AndroidNetworking.post("http://192.168.100.6:81/users/registration")
+        AndroidNetworking.post("http://192.168.0.34:82/users/registration")
                 //.addBodyParameter(user)
                 .addJSONObjectBody(jsonObject)
                 .setPriority(Priority.MEDIUM)
@@ -50,7 +52,7 @@ public class Registration {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        progressBar.setVisibility(View.GONE);
+                        progressBar.stop();
 
                         JSON json = new JSON(response);
                         if(json.key("success").intValue() == 1){
@@ -68,7 +70,7 @@ public class Registration {
                     @Override
                     public void onError(ANError error) {
                         // handle error
-                        progressBar.setVisibility(View.GONE);
+                        progressBar.stop();
                         Log.d("tag1",""+error);
                     }
                 });
